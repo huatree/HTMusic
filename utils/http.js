@@ -16,21 +16,18 @@ class HTRequest {
                     reject(error)
                 }
             } else {
+                let finalUrl = ''
                 if (service.overUrl) {
-                    service.url = service.overUrl
+                    finalUrl = service.overUrl
                 } else {
-                    service.url = BASE_URL + service.url
+                    finalUrl = BASE_URL + service.url
                 }
-                const {
-                    url,
-                    method
-                } = service
                 wx.request({
-                    url,
-                    method,
+                    url: finalUrl,
+                    method: service.method,
                     data: originalParams,
                     success: (res) => {
-                        resolve(res)
+                        resolve(res.data)
                     },
                     fail: (err) => {
                         reject(err)
