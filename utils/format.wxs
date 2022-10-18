@@ -1,0 +1,42 @@
+/**
+ * @description 格式化播放量
+ * @param {number} count 播放量
+ * @returns
+ */
+function formatCount(count) {
+    var counter = parseInt(count)
+    if (counter > 100000000) {
+        return (counter / 100000000).toFixed(1) + '亿'
+    }
+    if (counter > 10000) {
+        return (counter / 10000).toFixed(1) + '万'
+    }
+    return counter + ''
+}
+
+/**
+ * @description 格式化时间值
+ * @param {string} time 时间值
+ * @returns
+ */
+function padLeftZero(time) {
+    time = time + ''
+    return ('00' + time).slice(time.length)
+}
+
+/**
+ * @description 格式化时长
+ * @param {number} duration 时长
+ * @returns
+ */
+function formatDuration(duration) {
+    duration = duration / 1000
+    var minute = Math.floor(duration / 60)
+    var second = Math.floor(duration) % 60
+    return padLeftZero(minute) + ':' + padLeftZero(second)
+}
+
+module.exports = {
+    formatCount: formatCount,
+    formatDuration: formatDuration
+}
