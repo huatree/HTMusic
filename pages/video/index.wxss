@@ -1,4 +1,4 @@
-/* pages/home-video/index.wxss */
+/* pages/video/index.wxss */
 .video {
     display: flex;
     flex-wrap: wrap;

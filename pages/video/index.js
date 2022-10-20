@@ -1,4 +1,4 @@
-// pages/home-video/index.js
+// pages/video/index.js
 import htRequest from '../../utils/http'
 Page({
     /**
@@ -51,6 +51,16 @@ Page({
             if (offset === 0) {
                 wx.stopPullDownRefresh()
             }
+        })
+    },
+    /**
+     * @description 进入视频详情页
+     * @param {object} event
+     */
+    onDetail(event) {
+        const id = event.currentTarget.dataset.item.id
+        wx.navigateTo({
+            url: `/pages/video/detail/index?id=${id}`,
         })
     }
 })
