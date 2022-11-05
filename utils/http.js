@@ -22,11 +22,13 @@ class HTRequest {
                 } else {
                     finalUrl = BASE_URL + service.url
                 }
+                console.log(`${serviceName}入参：${JSON.stringify(originalParams)}`)
                 wx.request({
                     url: finalUrl,
                     method: service.method,
                     data: originalParams,
                     success: (res) => {
+                        console.log(`${serviceName}出参：${JSON.stringify(res)}`)
                         resolve(res.data)
                     },
                     fail: (err) => {
