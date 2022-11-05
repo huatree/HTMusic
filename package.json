@@ -19,6 +19,7 @@
   "homepage": "https://github.com/huatree/HTMusic#readme",
   "dependencies": {
     "@vant/weapp": "^1.10.5",
+    "hy-event-store": "^1.2.1",
     "lodash": "^4.17.21"
   }
 }

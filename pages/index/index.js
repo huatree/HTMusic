@@ -1,4 +1,5 @@
 // pages/index/index.js
+import { rankingStore } from '../../store/index'
 import htRequest from '../../utils/http'
 import queryReact from '../../utils/queryRect'
 
@@ -8,7 +9,8 @@ Page({
      */
     data: {
         swiperHeight: 0,
-        banners: []
+        banners: [],
+        recommendSongs: []
     },
 
     /**
@@ -19,6 +21,14 @@ Page({
         this.onLoadPic = wx.$_.throttle((event) => {
             this.getSwiperHeight()
         }, 300)
+        // 发起共享数据请求
+        rankingStore.dispatch('getRankingDataAction')
+        // 从store获取共享的数据
+        rankingStore.onState('hotRanking', (res) => {
+            if (!res.tracks) return
+            const recommendSongs = res.tracks.slice(0, 6)
+            this.setData({ recommendSongs })
+        })
     },
     onUnload() {
         this.onLoadPic.cancel()
