@@ -3,6 +3,7 @@ page {
     padding: 0 20rpx;
 }
 
+/* 搜索框 */
 .van-search {
     padding: 10px 0 !important;
 }
@@ -11,6 +12,8 @@ page {
     background-color: #fff !important;
 }
 
+/* 轮播图样式 */
+/* 手机系统webview */
 .swiper {
     border-radius: 10rpx;
     overflow: hidden;
