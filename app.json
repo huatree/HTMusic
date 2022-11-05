@@ -8,7 +8,7 @@
     "window": {
         "backgroundTextStyle": "light",
         "navigationBarBackgroundColor": "#fff",
-        "navigationBarTitleText": "Weixin",
+        "navigationBarTitleText": "HTMusic",
         "navigationBarTextStyle": "black"
     },
     "tabBar": {
