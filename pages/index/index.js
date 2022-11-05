@@ -1,66 +1,52 @@
 // pages/index/index.js
-Page({
+import htRequest from '../../utils/http'
+import queryReact from '../../utils/queryRect'
 
+Page({
     /**
      * 页面的初始数据
      */
     data: {
-
+        swiperHeight: 0,
+        banners: []
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad(options) {
-
+        this.getPageData()
+        this.onLoadPic = wx.$_.throttle((event) => {
+            this.getSwiperHeight()
+        }, 300)
     },
-
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide() {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
     onUnload() {
-
+        this.onLoadPic.cancel()
     },
-
     /**
-     * 页面相关事件处理函数--监听用户下拉动作
+     * @description 获取页面数据
+     * @returns
      */
-    onPullDownRefresh() {
-
+    getPageData() {
+        htRequest.run('getBanner').then((res) => {
+            this.setData({ banners: res.banners })
+        })
     },
-
     /**
-     * 页面上拉触底事件的处理函数
+     * @description 跳到搜索详情页
      */
-    onReachBottom() {
-
+    onSearch() {
+        wx.navigateTo({
+            url: '/pages/index/search/index'
+        })
     },
-
     /**
-     * 用户点击右上角分享
+     * @description 获取图片高度
      */
-    onShareAppMessage() {
-
+    getSwiperHeight() {
+        queryReact('.swiper-image').then((res) => {
+            const rect = res[0]
+            this.setData({ swiperHeight: rect.height })
+        })
     }
 })

@@ -2,7 +2,8 @@
     "pages": [
         "pages/index/index",
         "pages/video/index",
-        "pages/video/detail/index"
+        "pages/video/detail/index",
+        "pages/index/search/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
